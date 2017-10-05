@@ -1,0 +1,25 @@
+$navbar-default-bg: #0070ff;
+$navbar-default-text: white;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap/theme";
+
+.navbar-default {
+  background-color: white;
+}
+
+.jumbotron {
+  background-image: asset-url('Brandeis_University_seal');
+  background-size: cover;
+  height: 1000px;
+}
+
+.jumbotron h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  text-shadow: 5px 4px black;
+  font-weight: bold;
+}
