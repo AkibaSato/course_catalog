@@ -45,6 +45,7 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (7.1.4.1)
       execjs
+    bcrypt (3.1.11)
     better_errors (2.3.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -201,6 +202,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-import
+  bcrypt (~> 3.1.7)
   better_errors
   bootstrap-sass (~> 3.3.6)
   byebug
@@ -225,4 +227,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0.pre.3

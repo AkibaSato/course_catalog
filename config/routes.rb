@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sessions
   resources :users
   resources :courses
   resources :instructors
@@ -11,7 +12,11 @@ Rails.application.routes.draw do
   get 'subject', to: 'subjects#index'
   get 'user', to: 'user#index'
 
+  get  '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
 
-
-
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  
 end
