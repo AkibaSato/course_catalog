@@ -5,8 +5,8 @@ $navbar-default-text: white;
 @import "bootstrap";
 @import "bootstrap/theme";
 
-.navbar-default {
-  background-color: white;
+.navbar-header {
+  text: white;
 }
 
 .jumbotron {
@@ -22,4 +22,8 @@ $navbar-default-text: white;
   letter-spacing: -1px;
   text-shadow: 5px 4px black;
   font-weight: bold;
+}
+
+#bs-example-navbar-collapse-1 {
+  color: white;
 }
