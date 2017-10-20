@@ -4,6 +4,7 @@ class CreateInstructors < ActiveRecord::Migration[5.1]
       t.string :first
       t.string :middle
       t.string :last
+      t.string :university_id
       t.string :email
 
       t.timestamps

@@ -2,8 +2,14 @@
 
 one:
   name: MyString
-  number: MyString
+  university_id: MyString
+  code: MyString
+  credit: 1
+  description: MyString
 
 two:
   name: MyString
-  number: MyString
+  university_id: MyString
+  code: MyString
+  credit: 1
+  description: MyString

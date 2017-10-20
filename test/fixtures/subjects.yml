@@ -2,10 +2,12 @@
 
 one:
   name: MyString
-  term: MyString
+  university_id: MyString
   abbreviation: MyString
+  term: MyString
 
 two:
   name: MyString
-  term: MyString
+  university_id: MyString
   abbreviation: MyString
+  term: MyString

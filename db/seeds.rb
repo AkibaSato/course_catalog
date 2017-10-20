@@ -15,6 +15,7 @@ data_hash.each do |instructor|
   Instructor.create(first: instructor['first'],
                     middle: instructor['middle'],
                     last: instructor['last'],
+                    university_id: instructor['id'],
                     email: instructor['email'])
 end
 
@@ -22,9 +23,14 @@ end
 file = File.read('course.json')
 data_hash = JSON.parse(file)
 
+i = 1
 data_hash.each do |course|
-  Course.create(name: course['name'],
-                number: course['id'])
+  Course.create(university_id: i,
+                name: course['name'],
+                code: course['id'],
+                credit: course['credits'],
+                description: course['description'])
+                i = i + 1
   subjects = course['subjects']
 end
 
@@ -35,5 +41,6 @@ data_hash = JSON.parse(file)
 data_hash.each do |subject|
   Subject.create(name: subject['name'],
                 term: subject['term'],
-                abbreviation: subject['abbreviation'])
+                abbreviation: subject['abbreviation'],
+                university_id: subject['id'])
 end

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :courses
+  has_many :enrollments
+  has_many :courses, :through => :enrollments, foreign_key: 'user_id'
 
   before_save { self.email = email.downcase }
 
@@ -18,11 +19,22 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 4 }
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # Forgets a user.
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 
 end

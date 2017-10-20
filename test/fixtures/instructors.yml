@@ -4,10 +4,12 @@ one:
   first: MyString
   middle: MyString
   last: MyString
+  university_id: MyString
   email: MyString
 
 two:
   first: MyString
   middle: MyString
   last: MyString
+  university_id: MyString
   email: MyString

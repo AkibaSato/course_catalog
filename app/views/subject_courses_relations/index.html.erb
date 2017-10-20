@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Subject Courses Relations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subject_courses_relations.each do |subject_courses_relation| %>
+      <tr>
+        <td><%= subject_courses_relation.subject_id %></td>
+        <td><%= subject_courses_relation.course_id %></td>
+        <td><%= link_to 'Show', subject_courses_relation %></td>
+        <td><%= link_to 'Edit', edit_subject_courses_relation_path(subject_courses_relation) %></td>
+        <td><%= link_to 'Destroy', subject_courses_relation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subject Courses Relation', new_subject_courses_relation_path %>
