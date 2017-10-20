@@ -4,7 +4,7 @@
               <!-- <div id="filter-panel" class="collapse filter-panel"> -->
                   <div class="panel panel-default">
                       <div class="panel-body">
-                          <form id="live-search-form" class="form-inline" role="form" action="/serp" method="GET">
+                          <form id="live-search-form" class="form-inline" role="form" action="/entry" method="GET">
                               <div class="form-group">
                                   <label class="filter-col" style="margin-right:0;" for="pref-perpage">Subject:</label>
                                   <select id="pref-perpage" class="form-control" name="subject">
@@ -42,7 +42,7 @@
           <tbody>
             <% @courses.each do |each_course| %>
               <tr>
-                <th scope="row"><%= each_course['uni_id'] %></th>
+                <th scope="row"><%= each_course['university_id'] %></th>
                 <td><%= each_course['code'] %></td>
                 <td><%= each_course['name'] %></td>
                 <td><%= each_course['description'] %></td>

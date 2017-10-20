@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :entries
   resources :searches
   resources :subject_courses_relations
   resources :enrollments
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   get 'user', to: 'user#index'
 
   get 'search', to: 'searches#index'
+  get 'entry', to: 'entries#index'
+  get 'enroll', to: 'enrollments#index'
 
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'

@@ -10,6 +10,15 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments/1
   # GET /enrollments/1.json
   def show
+    @course_id = params[:course_id].to_i
+
+    @user ||= User.find_by(id: session[:user_id].to_i)
+    user_id = @user['id']
+    enroll = Enrollment.new
+    enroll.user_id = user_id
+    enroll.course_id = @course_id
+    enroll.save
+    @courses = Course.find_by(id: @course_id)
   end
 
   # GET /enrollments/new
