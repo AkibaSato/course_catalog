@@ -11,8 +11,9 @@ $navbar-default-text: white;
 
 .jumbotron {
   background-image: asset-url('Brandeis_University_seal');
-  background-size: cover;
-  height: 1000px;
+  background-size: 1000px 500px;
+  background-repeat: no-repeat;
+  height: 500px;
 }
 
 .jumbotron h1 {

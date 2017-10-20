@@ -8,6 +8,7 @@
 
 require 'json'
 
+Instructor.delete_all
 file = File.read('instructor.json')
 data_hash = JSON.parse(file)
 
@@ -19,7 +20,7 @@ data_hash.each do |instructor|
                     email: instructor['email'])
 end
 
-# Course parsing
+Course.delete_all
 file = File.read('course.json')
 data_hash = JSON.parse(file)
 
@@ -34,7 +35,7 @@ data_hash.each do |course|
   subjects = course['subjects']
 end
 
-# Subject parsing
+Subject.delete_all
 file = File.read('subject.json')
 data_hash = JSON.parse(file)
 
