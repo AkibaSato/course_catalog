@@ -6,5 +6,8 @@ class CreateSubjectCoursesRelations < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    # add_index :subject_courses, :course_id
+    # add_index :subject_courses, :subject_id
   end
 end

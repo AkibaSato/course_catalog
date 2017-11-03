@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<%= javascript_include_tag "_search_controller" %>
+
+<% course = params[:course] %>
+<% subject_university_id = params[:subject] %>
+
+<% if subject_university_id == "default" %>
+  <% @result = Course.where("name LIKE ?", "%#{course}%") %>
+<% end %>
+
+
 <h1><br>Listing Courses</h1>
 
 <table>

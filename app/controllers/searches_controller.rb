@@ -13,7 +13,14 @@ class SearchesController < ApplicationController
       redirect_to login_path
     end
     @subjects = Subject.all
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
+
+
 
   # GET /searches/1
   # GET /searches/1.json

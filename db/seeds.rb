@@ -20,14 +20,8 @@ data_hash.each do |each_instructor|
   instructor.university_id = each_instructor['id']
   instructor.email = each_instructor['email']
   instructor.save
-
-
-  # Instructor.create(first: instructor['first'],
-  #                   middle: instructor['middle'],
-  #                   last: instructor['last'],
-  #                   university_id: instructor['id'],
-  #                   email: instructor['email'])
 end
+
 
 Subject.delete_all
 file = File.read('subject.json')
@@ -40,21 +34,16 @@ data_hash.each do |each_subject|
   subject.abbreviation = each_subject['abbreviation']
   subject.university_id = each_subject['id']
   subject.save
-
-  # Subject.create(name: subject['name'],
-  #               term: subject['term'],
-  #               abbreviation: subject['abbreviation'],
-  #               university_id: subject['id'])
 end
 
 Course.delete_all
 file = File.read('course.json')
 data_hash = JSON.parse(file)
 
-# subjects = Subject.all
-
 i = 1
+
 data_hash.each do |each_course|
+
   course = Course.new
   course.university_id = i
 
@@ -65,30 +54,13 @@ data_hash.each do |each_course|
   course.save
   i = i + 1
 
-  # relation = SubjectCoursesRelation.new
-  # relation.course_id = course.code
-  # subject = subjects.find_by_ { course.code }
-
-  # Course.create(university_id: i,
-  #               name: course['name'],
-  #               code: course['id'],
-  #               credit: course['credits'],
-  #               description: course['description'])
-  #               i = i + 1
-  # subjects = course['subjects']
-
-end
-
-SubjectCoursesRelation.delete_all
-file = File.read('course.json')
-data_hash = JSON.parse(file)
-
-data_hash.each do |each_course|
-  course1 = Course.where(:code => each_course['code']).first
-  each_course['subjects'].each do |each_subject|
-    relation = SubjectCoursesRelation.new
-    relation.course_id = each_course['code']
-    relation.subject_id = each_subject['university_id']
-    relation.save
+  subject = Subject.all
+  subject.each do |each_subject|
+    if each_subject['university_id'] == each_course['subjects'][0]['id']
+      relation = SubjectCoursesRelation.new
+      relation.course_id = course['id'].to_i
+      relation.subject_id = each_subject['id'].to_i
+      relation.save
+    end
   end
 end
