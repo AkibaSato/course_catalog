@@ -1,30 +1,50 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Enrollment Successful") %>
 
 <h1>Enrollments</h1>
 
-<table>
-  <thead>
+
+
+<table class="table">
+  <thead class="thead-default">
     <tr>
-      <th>User</th>
-      <th>Course</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Credits</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @enrollments.each do |enrollment| %>
+
+    <% @enrollments.each do |each_course| %>
       <tr>
-        <td><%= enrollment.user_id %></td>
-        <td><%= enrollment.course_id %></td>
-        <td><%= @course  %></td>
-        <td><%= link_to 'Show', enrollment %></td>
-        <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
-        <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% @course = Course.find_by(id: each_course.course_id) %>
+
+        <% if !@course.nil? %>
+          <tr>
+            <th scope="row"><%= each_course.course_id %></th>
+            <td><%= @course['code'] %></td>
+            <td><%= @course['name'] %></td>
+            <td><%= @course['description'] %></td>
+            <td><%= @course['credit'] %></td>
+            <td><button type="submit" class="btn btn-primary"><%= link_to 'Delete', each_course, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+
+          </tr>
+        <% end %>
+
       </tr>
     <% end %>
+
+    <!-- <% @enrollments.each do |each_course| %>
+      <tr>
+        <th scope="row"><%= each_course['university_id'] %></th>
+        <td><%= each_course['code'] %></td>
+        <td><%= each_course['name'] %></td>
+        <td><%= each_course['description'] %></td>
+        <td><%= each_course['credit'] %></td>
+
+      </tr>
+    <% end %> -->
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Enrollment', searches_path %>

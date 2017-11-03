@@ -4,7 +4,12 @@ class InstructorsController < ApplicationController
   # GET /instructors
   # GET /instructors.json
   def index
-    @instructors = Instructor.all
+    if logged_in?
+      @user ||= User.find_by(id: session[:user_id])
+      @instructors = Instructor.all
+    else
+      redirect_to login_path
+    end
   end
 
   # GET /instructors/1

@@ -4,12 +4,31 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments
   # GET /enrollments.json
   def index
-    @enrollments = Enrollment.all
+    @user ||= User.find_by(id: session[:user_id].to_i)
+
+    @enrollments = @user.enrollments
+
+    # @course_id = params[:course_id].to_i
+    # @courses = Course.all.find_by(id: @course_id)
+
+    # @course_id = params[:course_id].to_i
+    #
+    # @user ||= User.find_by(id: session[:user_id].to_i)
+    # user_id = @user['id']
+    # enroll = Enrollment.new
+    # enroll.user_id = user_id
+    # enroll.course_id = @course_id
+    # enroll.save
+    # @courses = Course.all.find_by(id: @course_id)
   end
 
   # GET /enrollments/1
   # GET /enrollments/1.json
   def show
+  end
+
+  # GET /enrollments/new
+  def new
     @course_id = params[:course_id].to_i
 
     @user ||= User.find_by(id: session[:user_id].to_i)
@@ -19,11 +38,7 @@ class EnrollmentsController < ApplicationController
     enroll.course_id = @course_id
     enroll.save
     @courses = Course.find_by(id: @course_id)
-  end
 
-  # GET /enrollments/new
-  def new
-    @enrollment = Enrollment.new
   end
 
   # GET /enrollments/1/edit
@@ -34,6 +49,8 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments.json
   def create
     @enrollment = Enrollment.new(enrollment_params)
+
+
 
     respond_to do |format|
       if @enrollment.save

@@ -8,7 +8,15 @@ class EntriesController < ApplicationController
     course = params[:course]
     subject_university_id = params[:subject]
 
-    @result = Course.where("name LIKE ?", "%#{course}%")
+    if subject_university_id == "default"
+      @result = Course.where("name LIKE ?", "%#{course}%")
+    else
+      if course == nil || course == ""
+        @result = Subject.where(university_id: subject_university_id).first.courses
+      else
+        @result = Subject.where(university_id: subject_university_id).first.courses.where("name LIKE ?", "%#{course}%")
+      end
+    end
   end
 
   # GET /entries/1

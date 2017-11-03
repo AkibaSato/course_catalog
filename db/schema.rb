@@ -54,11 +54,6 @@ ActiveRecord::Schema.define(version: 20171020033456) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shareds", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "subject_courses_relations", force: :cascade do |t|
     t.string "subject_id"
     t.string "course_id"

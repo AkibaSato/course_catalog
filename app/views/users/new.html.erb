@@ -3,7 +3,14 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+    <%= simple_form_for @user, url: register_path do |f| %>
+      <%= f.input :name, label: 'Your username please', error: 'Username is mandatory, please specify one' %>
+      <%= f.input :password, hint: 'No special characters.' %>
+      <%= f.input :email, placeholder: 'user@domain.com' %>
+      <%= f.button :submit %>
+    <% end %>
+
+    <!-- <%= form_for(@user) do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
 
@@ -17,6 +24,6 @@
       <%= f.password_field :password_confirmation %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
+    <% end %> -->
   </div>
 </div>

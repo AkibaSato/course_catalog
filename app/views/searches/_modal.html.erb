@@ -1,29 +1,27 @@
-<% provide(:title, "Entries") %>
+<p id="notice"><%= notice %></p>
 
-<h1>Course Table</h1>
-<% if @user.nil? %>
-  <h2>Log in please</h2>
-<% else %>
-  <h2>User: <%= @user['name'] %></h2>
-<% end %>
-<table class="table">
-  <thead class="thead-default">
+<h1><br>Listing Courses</h1>
+
+<table>
+  <thead>
     <tr>
-      <th>ID</th>
+      <th>Id</th>
       <th>Code</th>
       <th>Name</th>
       <th>Description</th>
-      <th>Credits</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
+
   <tbody>
-    <% @result.each do |each_course| %>
+    <% @courses.each do |each_course| %>
       <tr>
-        <th scope="row"><%= each_course['university_id'] %></th>
+        <th scope="row"><%= each_course['uni_id'] %></th>
         <td><%= each_course['code'] %></td>
         <td><%= each_course['name'] %></td>
         <td><%= each_course['description'] %></td>
         <td><%= each_course['credit'] %></td>
+
         <% if @user.nil? %>
           <form action="/login" method="GET">
             <td><button type="submit" class="btn btn-primary">Login Please</button></td>
@@ -34,7 +32,12 @@
           </form>
         <% end %>
 
+
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Course', new_course_path %>

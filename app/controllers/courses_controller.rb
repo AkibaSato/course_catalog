@@ -4,8 +4,14 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    if logged_in?
+      @user ||= User.find_by(id: session[:user_id])
+      @courses = Course.all
+    else
+      redirect_to login_path
+    end
   end
+
 
   # GET /courses/1
   # GET /courses/1.json

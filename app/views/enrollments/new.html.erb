@@ -1,5 +1,29 @@
-<h1>New Enrollment</h1>
+<% provide(:title, "Enrollment Successful") %>
 
-<%= render 'form', enrollment: @enrollment %>
+<h1>Enrollment Successful</h1>
+<h1><%= @user['name']%></h1>
 
-<%= link_to 'Back', enrollments_path %>
+
+
+<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>ID</th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= @course_id%></th>
+        <td><%= @courses['code'] %></td>
+        <td><%= @courses['name'] %></td>
+        <td><%= @courses['description'] %></td>
+        <td><%= @courses['credit'] %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Back', searches_path %>

@@ -5,7 +5,13 @@ class SearchesController < ApplicationController
   # GET /searches.json
 
   def index
-    @courses = Course.all
+    if logged_in?
+      @user ||= User.find_by(id: session[:user_id])
+      @courses = Course.search(params[:search])
+      @subjects = Subject.all
+    else
+      redirect_to login_path
+    end
     @subjects = Subject.all
   end
 
@@ -16,7 +22,14 @@ class SearchesController < ApplicationController
 
   # GET /searches/new
   def new
-    @search = Search.new
+    if logged_in?
+      @user ||= User.find_by(id: session[:user_id])
+      @courses = Course.search(params[:search])
+      @subjects = Subject.all
+    else
+      redirect_to login_path
+    end
+    @subjects = Subject.all
   end
 
   # GET /searches/1/edit

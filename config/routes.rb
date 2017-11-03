@@ -16,12 +16,14 @@ Rails.application.routes.draw do
   get 'subject', to: 'subjects#index'
   get 'user', to: 'user#index'
 
-  get 'search', to: 'searches#index'
+  get 'search', to: 'searches#new'
   get 'entry', to: 'entries#index'
-  get 'enroll', to: 'enrollments#index'
+  get 'enroll', to: 'enrollments#new'
 
-  get  '/signup',  to: 'users#new'
-  post '/signup',  to: 'users#create'
+  get  'signup',  to: 'users#new'
+
+  post 'register', to: 'users#create'
+
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

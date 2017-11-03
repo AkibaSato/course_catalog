@@ -4,7 +4,12 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.all
+    if logged_in?
+      @user ||= User.find_by(id: session[:user_id])
+      @subjects = Subject.all
+    else
+      redirect_to login_path
+    end
   end
 
   # GET /subjects/1
