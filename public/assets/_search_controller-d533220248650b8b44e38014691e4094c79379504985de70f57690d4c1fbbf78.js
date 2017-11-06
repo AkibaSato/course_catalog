@@ -1,0 +1,1 @@
+function ajaxSearch(){var e,t,n,a,l,m;for(e=document.getElementById("myInput"),t=e.value.toUpperCase(),n=document.getElementById("myTable"),a=n.getElementsByTagName("tr"),m=0;m<a.length;m++)(l=a[m].getElementsByTagName("td")[0])&&(l.innerHTML.toUpperCase().indexOf(t)>-1?a[m].style.display="":a[m].style.display="none")}
