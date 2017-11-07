@@ -1,7 +1,7 @@
 # README
 
 GitHub: https://github.com/AkibaSato/course_catalog
-Heroku: https://course-catalog-asato.herokuapp.com
+Heroku: https://new-course-catalog-asato.herokuapp.com
 
 
 
