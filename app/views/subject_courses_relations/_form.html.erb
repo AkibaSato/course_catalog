@@ -1,27 +1,12 @@
-<%= form_with(model: subject_courses_relation, local: true) do |form| %>
-  <% if subject_courses_relation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(subject_courses_relation.errors.count, "error") %> prohibited this subject_courses_relation from being saved:</h2>
+<%= simple_form_for(@subject_courses_relation) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% subject_courses_relation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :subject_id %>
-    <%= form.text_field :subject_id, id: :subject_courses_relation_subject_id %>
+  <div class="form-inputs">
+    <%= f.input :subject_id %>
+    <%= f.input :course_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :course_id %>
-    <%= form.text_field :course_id, id: :subject_courses_relation_course_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
