@@ -18,36 +18,31 @@
     <label class="filter-col" style="margin-right:0;" for="pref-search"></label>
     <button type="submit" class="btn btn-default filter-col">Submit</button>
   </div>
+
+  <input type="text" id="myInput" onkeyup="ajaxSearch()" placeholder="Search for courses.." title="Type in a name">
 </form>
 
-<input type="text" id="myInput" onkeyup="ajaxSearch()" placeholder="Search for courses.." title="Type in a name">
+<form action="/enroll" method="GET">
 
-<table id="myTable">
-  <tr class="header">
-    <th style="width:20%;">Name</th>
-    <th style="width:55%;">Description</th>
-    <th style="width:5%;">ID</th>
-    <th style="width:5%;">Code</th>
-    <th style="width:5%;">Credit</th>
-  </tr>
-  <% @courses.each do |each_course| %>
-    <tr>
-      <td><%= each_course['name'] %></td>
-      <td><%= each_course['description'] %></td>
-      <td><%= each_course['university_id'] %></td>
-      <td><%= each_course['code'] %></td>
-      <td><%= each_course['credit'] %></td>
-
-      <% if @user.nil? %>
-        <form action="/login" method="GET">
-          <td><button type="submit" class="btn btn-primary">Login Please</button></td>
-        </form>
-      <% else %>
-        <form action="/enroll" method="GET">
-          <td><button type="submit" class="btn btn-primary" value="<%= each_course['id'] %>" name = "course_id">Enroll</button></td>
-        </form>
-      <% end %>
-
+  <table id="myTable">
+    <tr class="header">
+      <th style="width:20%;">Name</th>
+      <th style="width:55%;">Description</th>
+      <th style="width:5%;">ID</th>
+      <th style="width:5%;">Code</th>
+      <th style="width:5%;">Credit</th>
     </tr>
-  <% end %>
-</table>
+    <% @courses.each do |each_course| %>
+      <tr>
+        <td><%= each_course['name'] %></td>
+        <td><%= each_course['description'] %></td>
+        <td><%= each_course['university_id'] %></td>
+        <td><%= each_course['code'] %></td>
+        <td><%= each_course['credit'] %></td>
+
+        <td><button type="submit" class="btn btn-primary" value="<%= each_course['id'] %>" name = "course_id">Enroll</button></td>
+
+      </tr>
+    <% end %>
+  </table>
+</form>
